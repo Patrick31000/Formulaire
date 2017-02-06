@@ -12,7 +12,6 @@ form div+div {
     margin-top: 1em;
 }
 
-input,
 textarea {
     /* To make sure that all text fields have the same font settings
        By default, textareas have a monospace font */
@@ -25,10 +24,19 @@ textarea {
     border: 1px solid #999;
 }
 
-input:focus,
-textarea:focus {
-    /* To give a little highlight on active elements */
-    border-color: greenyellow;
+input {
+    font: 1em sans-serif;
+    width: 300px;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+input:invalid {
+    box-shadow: 0 0 5px 1px red;
+}
+
+input:valid {
+    box-shadow: 0 0 5px 1px green;
 }
 
 textarea {
