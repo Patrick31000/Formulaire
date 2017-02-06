@@ -17,9 +17,66 @@
 
 <body>
 
-    <header>
+    <form action="/my-handling-form-page" method="post">
+        <div>
+            <label for="nom">Nom:</label>
+            <input type="text" id="nom" name="user_name" />
+        </div>
+        <div>
+            <label for="prenom">Prénom:</label>
+            <input type="text" id="prenom" name="user_forname" />
+        </div>
+        <div>
+            <label for="login">Login:</label>
+            <input type="text" id="login" name="user_login" />
+        </div>
+    </form>
 
-    </header>
+    <fieldset>
+        <legend>Quel est votre sexe ?</legend>
+        <p><label for="g1"><input type="radio" name="g" id="g1" value="M"> Male</label></p>
+        <p><label for="g2"><input type="radio" name="g" id="g2" value="F"> Female</label></p>
+    </fieldset>
+
+    <form action="/my-handling-form-page" method="post">
+        <div>
+            <label for="password">Mot de passe:</label>
+            <input type="password" id="password" name="user_password" />
+        </div>
+        <div>
+            <label for="Datenaissance">Date de naissance:</label>
+            <input type="date" id="datenaissance" name="user_birthdate" />
+        </div>
+        <div>
+            <label for="Ville">Ville:</label>
+            <input type="text" id="ville" name="user_town" />
+        </div>
+        <div>
+            <label for="Mail">Mail:</label>
+            <input type="mail" id="mail" name="user_mail" />
+        </div>
+        <div>
+            <label for="URL">URL de votre site:</label>
+            <input type="url" id="url" name="user_url" />
+        </div>
+        <div>
+            <label for="hobbys">Hobbys:</label>
+            <textarea cols="20" rows="10"></textarea>
+        </div>
+        <div>
+            <label for="Tel">Téléphone:</label>
+            <input type="tel" id="tel" name="user_tel" />
+        </div>
+        <div>
+            <label for="Color">Couleur préférée:</label>
+            <input type="text" id="color" name="user_color" />
+        </div>
+        <div class="button">
+            <button type="submit">Envoyer les données</button>
+        </div>
+    </form>
+
+
 
 
 
