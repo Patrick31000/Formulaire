@@ -2,7 +2,7 @@ $(document).ready(function() {
     $('#passwordInput, #confirmPasswordInput').on('keyup', function(e) {
 
         if ($('#passwordInput').val() != '' && $('#confirmPasswordInput').val() != '' && $('#passwordInput').val() != $('#confirmPasswordInput').val()) {
-            $('#passwordStrength').removeClass().addClass('alert alert-error').html('Passwords do not match!');
+            $('#passwordStrength').removeClass().addClass('alert alert-error').html('Vos mots de passe ne correspondent pas');
 
             return false;
         }
@@ -14,15 +14,15 @@ $(document).ready(function() {
         var mediumRegex = new RegExp("^(?=.{7,})(((?=.*[A-Z])(?=.*[a-z]))|((?=.*[A-Z])(?=.*[0-9]))|((?=.*[a-z])(?=.*[0-9]))).*$", "g");
 
         // Must be at least 6 characters long
-        var okRegex = new RegExp("(?=.{6,}).*", "g");
+        var okRegex = new RegExp("(?=.{8,}).*", "g");
 
         if (okRegex.test($(this).val()) === false) {
             // If ok regex doesn't match the password
-            $('#passwordStrength').removeClass().addClass('alert alert-error').html('Password must be 6 characters long.');
+            $('#passwordStrength').removeClass().addClass('alert alert-error').html('Votre mot de passe doit comporter 8 caractères');
 
         } else if (strongRegex.test($(this).val())) {
             // If reg ex matches strong password
-            $('#passwordStrength').removeClass().addClass('alert alert-success').html('Good Password!');
+            $('#passwordStrength').removeClass().addClass('alert alert-success').html('Mot de passe correct !');
         } else if (mediumRegex.test($(this).val())) {
             // If medium password matches the reg ex
             $('#passwordStrength').removeClass().addClass('alert alert-info').html('Make your password stronger with more capital letters, more numbers and special characters!');
@@ -34,27 +34,43 @@ $(document).ready(function() {
         return true;
     });
 
-    $(function() {
-        $("#ville").autocomplete({
-            source: function(request, response) {
-                $.getJSON(
-                    "http://gd.geobytes.com/AutoCompleteCity?callback=?&q=" + request.term,
-                    function(data) {
-                        response(data);
-                    }
-                );
-            },
-            minLength: 3,
-            select: function(event, ui) {
-                var selectedObj = ui.item;
-                $("#ville").val(selectedObj.value);
-                getcitydetails(selectedObj.value);
-                return false;
-            },
+    $(document).ready(function() {
+
+        $('.show-password').click(function() {
+            if ($(this).prev('input').prop('type') == 'password') {
+                //Si c'est un input type password
+                $(this).prev('input').prop('type', 'text');
+                $(this).text('cacher');
+            } else {
+                //Sinon
+                $(this).prev('input').prop('type', 'password');
+                $(this).text('afficher');
+            }
         });
-        $("#ville").autocomplete("option", "delay", 100);
+
+
+        $(function() {
+            $("#ville").autocomplete({
+                source: function(request, response) {
+                    $.getJSON(
+                        "http://gd.geobytes.com/AutoCompleteCity?callback=?&q=" + request.term,
+                        function(data) {
+                            response(data);
+                        }
+                    );
+                },
+                minLength: 3,
+                select: function(event, ui) {
+                    var selectedObj = ui.item;
+                    $("#ville").val(selectedObj.value);
+                    getcitydetails(selectedObj.value);
+                    return false;
+                },
+            });
+            $("#ville").autocomplete("option", "delay", 100);
+        });
+
+
+
     });
-
-
-
 });

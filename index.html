@@ -20,7 +20,7 @@
     <form action="/my-handling-form-page" method="post">
         <div>
             <label for="nom">Nom:</label>
-            <input type="text" id="nom" name="user_name">
+            <input type="text" id="nom" name="user_name" required>
         </div>
         <div>
             <label for="prenom">Prénom:</label>
@@ -40,8 +40,12 @@
 
     <form action="/my-handling-form-page" method="post">
         <div>
-            <label for="passwordInput">Password: <input type="password" id="passwordInput" name="passwordInput" ></label>
-            <label for="confirmPasswordInput">Confirm Password: <input type="password" id="confirmPasswordInput" name="confirmPasswordInput" ></label>
+            <label for="passwordInput">Mot de passe</label>
+            <input type="password" id="passwordInput" name="passwordInput">
+            <span class="show-password">afficher</span>
+            <label for="confirmPasswordInput">Confirmez le mot de passe:</label>
+            <input type="password" id="confirmPasswordInput" name="confirmPasswordInput">
+            <span class="show-password">afficher</span>
             <div class="" id="passwordStrength"></div>
         </div>
         <div>
@@ -66,11 +70,11 @@
         </div>
         <div>
             <label for="Tel">Téléphone:</label>
-            <input type="tel" id="tel" name="user_tel">
+            <input type="phone" id="tel" name="user_tel" required>
         </div>
         <div>
             <label for="Color">Couleur préférée:</label>
-            <input type="color" id="color" name="user_color" list="li">
+            <input type="color" id="color" name="user_color" list="li" required>
         </div>
         <div class="button">
             <button type="submit">Envoyer les données</button>

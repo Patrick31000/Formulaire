@@ -60,3 +60,11 @@ button {
        between the labels and their text fields */
     margin-left: .5em;
 }
+
+.show-password {
+    font-size: 9px;
+    text-transform: uppercase;
+    position: absolute;
+    cursor: pointer;
+    margin-left: -48px;
+}
