@@ -73,4 +73,20 @@ $(document).ready(function() {
 
 
     });
+
+
+
+
+
+    $("#login").focusout(function() {
+        var login = $('#login').val();
+        console.log(login);
+        localStorage.setItem("login", login);
+        console.log(localStorage.login);
+    });
+
+
+
+
+
 });
