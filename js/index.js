@@ -1,7 +1,9 @@
-$(document).ready(function() {
-    $('#passwordInput, #confirmPasswordInput').on('keyup', function(e) {
+var login
 
-        if ($('#passwordInput').val() != '' && $('#confirmPasswordInput').val() != '' && $('#passwordInput').val() != $('#confirmPasswordInput').val()) {
+$(document).ready(function() {
+    $('#password, #confirmPasswordInput').on('keyup', function(e) {
+
+        if ($('#password').val() != '' && $('#confirmPasswordInput').val() != '' && $('#password').val() != $('#confirmPasswordInput').val()) {
             $('#passwordStrength').html('Vos mots de passe ne correspondent pas');
 
             return false;
@@ -34,54 +36,49 @@ $(document).ready(function() {
         return true;
     });
 
-    $(document).ready(function() {
-
-        $('.show-password').click(function() {
-            if ($(this).prev('input').prop('type') == 'password') {
-                //Si c'est un input type password
-                $(this).prev('input').prop('type', 'text');
-                $(this).text('cacher');
-            } else {
-                //Sinon
-                $(this).prev('input').prop('type', 'password');
-                $(this).text('afficher');
-            }
-        });
-
-
-        $(function() {
-            $("#ville").autocomplete({
-                source: function(request, response) {
-                    $.getJSON(
-                        "http://gd.geobytes.com/AutoCompleteCity?callback=?&q=" + request.term,
-                        function(data) {
-                            response(data);
-                        }
-                    );
-                },
-                minLength: 3,
-                select: function(event, ui) {
-                    var selectedObj = ui.item;
-                    $("#ville").val(selectedObj.value);
-                    return false;
-                },
-            });
-            $("#ville").autocomplete("option", "delay", 100);
-        });
-
-
-
+    $('.show-password').click(function() {
+        if ($(this).prev('input').prop('type') == 'password') {
+            //Si c'est un input type password
+            $(this).prev('input').prop('type', 'text');
+            $(this).text('cacher');
+        } else {
+            //Sinon
+            $(this).prev('input').prop('type', 'password');
+            $(this).text('afficher');
+        }
     });
 
-
-
-
+    $(function() {
+        $("#ville").autocomplete({
+            source: function(request, response) {
+                $.getJSON(
+                    "http://gd.geobytes.com/AutoCompleteCity?callback=?&q=" + request.term,
+                    function(data) {
+                        response(data);
+                    }
+                );
+            },
+            minLength: 3,
+            select: function(event, ui) {
+                var selectedObj = ui.item;
+                $("#ville").val(selectedObj.value);
+                return false;
+            },
+        });
+        $("#ville").autocomplete("option", "delay", 100);
+    });
 
     $("#login").focusout(function() {
-        var login = $('#login').val();
+        login = $('#login').val();
         console.log(login);
         localStorage.setItem("login", login);
         console.log(localStorage.login);
+    });
+
+    $("#password").focusout(function() {
+        var pass = $('#password').val();
+        localStorage.setItem("password", password);
+        console.log(localStorage.password);
     });
 
     // contrôle url
@@ -95,6 +92,36 @@ $(document).ready(function() {
         }
     });
 
+    $('.show-password2').click(function() {
+        if ($(this).prev('input').prop('type') == 'password') {
+            //Si c'est un input type password
+            $(this).prev('input').prop('type', 'text');
+            $(this).text('cacher');
+        } else {
+            //Sinon
+            $(this).prev('input').prop('type', 'password');
+            $(this).text('afficher');
+        }
+    });
 
+    // lecture localStorage connexion
+    $("#login2").focusout(function() {
+        var login2 = $('#login2').val();
+        localStorage.getItem("login", login);
+        if (login2 == localStorage.getItem("login", login)) {
+            console.log("login ok");
+        } else {
+            console.log("login erroné");
+        }
+    });
 
+    $("#password2").focusout(function() {
+        var password2 = $('#password2').val();
+        localStorage.getItem("password", password);
+        if (password2 == localStorage.getItem("password", password)) {
+            console.log("pass ok");
+        } else {
+            console.log("pass erroné");
+        }
+    });
 });
