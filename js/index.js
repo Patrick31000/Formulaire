@@ -2,7 +2,7 @@ $(document).ready(function() {
     $('#passwordInput, #confirmPasswordInput').on('keyup', function(e) {
 
         if ($('#passwordInput').val() != '' && $('#confirmPasswordInput').val() != '' && $('#passwordInput').val() != $('#confirmPasswordInput').val()) {
-            $('#passwordStrength').removeClass().addClass('alert alert-error').html('Vos mots de passe ne correspondent pas');
+            $('#passwordStrength').html('Vos mots de passe ne correspondent pas');
 
             return false;
         }
@@ -63,7 +63,6 @@ $(document).ready(function() {
                 select: function(event, ui) {
                     var selectedObj = ui.item;
                     $("#ville").val(selectedObj.value);
-                    getcitydetails(selectedObj.value);
                     return false;
                 },
             });
@@ -85,7 +84,16 @@ $(document).ready(function() {
         console.log(localStorage.login);
     });
 
-
+    // contrôle url
+    $('#url').focusout(function() {
+        var urlRegex = new RegExp(/^(HTTP|HTTP|http(s)?:\/\/|(www\.))?[A-Za-z0-9]+([\-\.]{1}[A-Za-z0-9]+)*\.[A-Za-z]{2,40}(:[0-9]{1,40})?(\/.*)?$/);
+        var urlOk = $("#url").val();
+        if (urlRegex.test(urlOk) === true) {
+            $('#urlOk').removeClass().addClass('alert alert-success').html('Votre url est validée!');
+        } else {
+            $('#urlOk').removeClass().addClass('alert alert-error').html('Veuillez renseigner une url valide.');
+        }
+    });
 
 
 

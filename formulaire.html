@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <title>title</title>
 
-    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <link rel="stylesheet" type="text/css" href="css/formulaire.css">
 
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
@@ -17,9 +17,22 @@
 
 <body>
 
-    <script>
-        document.write(" <h1> " + localStorage.login + "</h1>")
-    </script>
+    <h1>Formulaire de connexion</h1>
+
+    <form>
+        <div>
+            <label for="login">Login:</label>
+            <input type="text" id="login" name="user_login">
+        </div>
+        <div>
+            <label for="passwordInput">Mot de passe</label>
+            <input type="password" id="passwordInput" name="passwordInput">
+            <span class="show-password">afficher</span>
+        </div>
+    </form>
+
+
+
 
     <footer>
 
