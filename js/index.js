@@ -1,9 +1,10 @@
 var login
+var pass
 
 $(document).ready(function() {
-    $('#password, #confirmPasswordInput').on('keyup', function(e) {
+    $('#pass, #confirmPasswordInput').on('keyup', function(e) {
 
-        if ($('#password').val() != '' && $('#confirmPasswordInput').val() != '' && $('#password').val() != $('#confirmPasswordInput').val()) {
+        if ($('#pass').val() != '' && $('#confirmPasswordInput').val() != '' && $('#pass').val() != $('#confirmPasswordInput').val()) {
             $('#passwordStrength').html('Vos mots de passe ne correspondent pas');
 
             return false;
@@ -75,10 +76,10 @@ $(document).ready(function() {
         console.log(localStorage.login);
     });
 
-    $("#password").focusout(function() {
-        var pass = $('#password').val();
-        localStorage.setItem("password", password);
-        console.log(localStorage.password);
+    $("#pass").focusout(function() {
+        pass = $('#pass').val();
+        localStorage.setItem("pass", pass);
+        console.log(localStorage.pass);
     });
 
     // contrôle url
@@ -115,10 +116,11 @@ $(document).ready(function() {
         }
     });
 
-    $("#password2").focusout(function() {
-        var password2 = $('#password2').val();
-        localStorage.getItem("password", password);
-        if (password2 == localStorage.getItem("password", password)) {
+    $("#pass2").focusout(function() {
+        var pass2 = $('#pass2').val();
+        localStorage.getItem("pass", pass);
+        console.log(localStorage.getItem("pass", pass));
+        if (pass2 === localStorage.getItem("pass", pass)) {
             console.log("pass ok");
         } else {
             console.log("pass erroné");
